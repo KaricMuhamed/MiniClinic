@@ -1,0 +1,24 @@
+﻿@model IEnumerable<MiniClinic.Entities.Symptom>
+@{
+    ViewData["Title"] = "Symptoms per Patient";
+}
+
+<h2>Symptoms per Patient</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Patient Name</th>
+            <th>Symptom</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var symptom in Model)
+        {
+            <tr>
+                <td>@symptom.Patient?.Name</td>
+                <td>@symptom.Name</td>
+            </tr>
+        }
+    </tbody>
+</table>

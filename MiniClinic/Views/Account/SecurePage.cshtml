@@ -1,0 +1,56 @@
+﻿@{
+    ViewData["Title"] = "Secure Page";
+}
+
+<div class="card">
+    <div class="card-header bg-secondary text-white">
+        <h4 class="mb-0">Hello @ViewBag.Name [@ViewBag.Role]</h4>
+    </div>
+    <div class="card-body">
+        @if (ViewBag.Role == "Admin")
+        {
+            <h2>Admin Dashboard</h2>
+            <p>Admins have full control over the system.</p>
+        }
+        else if (ViewBag.Role == "Doctor")
+        {
+            <h2>Your Patients</h2>
+            @if (ViewBag.Patients != null)
+            {
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>@Html.DisplayNameFor(model => ((MiniClinic.Entities.Patient)null).Name)</th>
+                            <th>@Html.DisplayNameFor(model => ((MiniClinic.Entities.Patient)null).DateOfBirth)</th>
+                            <th>@Html.DisplayNameFor(model => ((MiniClinic.Entities.Patient)null).Gender)</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in ViewBag.Patients as List<MiniClinic.Entities.Patient>)
+                        {
+                            <tr>
+                                <td>@item.Name</td>
+                                <td>@item.DateOfBirth.ToShortDateString()</td>
+                                <td>@item.Gender</td>
+                                <td>
+                                    @Html.ActionLink("Document appointment", "DocumentAppointment", "Appointment", new { patientId = item.Id }, new { @class = "btn btn-outline-primary btn-sm me-1" })
+                                    @Html.ActionLink("Medical record", "Index", "MedicalRecord", new { patientId = item.Id }, new { @class = "btn btn-outline-secondary btn-sm" })
+                                    @Html.ActionLink("Patient has unusual symptom?", "Create", "Symptom", new { patientId = item.Id }, new { @class = "btn btn-outline-warning btn-sm" })
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+            else
+            {
+                <p>No patients assigned to you.</p>
+            }
+        }
+        else
+        {
+            <p>Unauthorized access.</p>
+        }
+    </div>
+</div>

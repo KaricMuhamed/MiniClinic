@@ -1,0 +1,38 @@
+﻿## Ignore build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Dd]ist/
+[Dd]ebug-*/
+[Dd]ist-*/
+
+## Ignore user-specific files
+.vs/
+.vscode/
+.idea/
+*.user
+*.userosscache
+*.suo
+*.sdf
+*.dbmdl
+*.jfm
+*.pdb
+
+## Ignore dependencies and package files
+node_modules/
+bower_components/
+packages/
+*.nupkg
+
+## Ignore build output and temporary files
+bin/
+obj/	
+
+## Ignore ASP.NET Scaffolding
+Scaffolding/
+
+## Ignore Visual Studio for Mac config files
+.vscode/
+.idea/
+
+## Ignore JetBrains Rider config files
+.idea/

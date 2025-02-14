@@ -1,0 +1,27 @@
+﻿@model MiniClinic.Models.SymptomViewModel
+@{
+    ViewData["Title"] = "Add Unusual Symptom";
+}
+
+<h2>Add Unusual Symptom</h2>
+
+<form asp-action="Create" method="post">
+    <input type="hidden" asp-for="PatientId" />
+
+    <div class="form-group">
+        <label asp-for="SelectedSymptomId" class="control-label">Select Symptom</label>
+        <select asp-for="SelectedSymptomId" class="form-control" asp-items="ViewBag.Symptoms">
+            <option value="">-- Select a symptom --</option>
+        </select>
+        <span asp-validation-for="SelectedSymptomId" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
